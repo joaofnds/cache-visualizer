@@ -1,0 +1,27 @@
+{
+  "name": "cache-simulator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.tsx",
+  "scripts": {
+    "serve": "parcel serve index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "preact": "^10.0.0-beta.1"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.132",
+    "husky": "^2.3.0",
+    "parcel": "^1.12.3",
+    "prettier": "^1.17.1",
+    "pretty-quick": "^1.11.0",
+    "typescript": "^3.5.1"
+  },
+  "hooks": {
+    "pre-commit": "pretty-quick"
+  }
+}
