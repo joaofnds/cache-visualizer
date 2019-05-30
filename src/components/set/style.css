@@ -1,0 +1,12 @@
+.set {
+  display: flex;
+}
+
+.set > div {
+  flex-grow: 1;
+
+  text-align: center;
+  padding: 1rem;
+
+  box-shadow: inset 0px 0px 3px 0px #333;
+}

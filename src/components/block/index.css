@@ -1,0 +1,8 @@
+.block {
+  display: flex;
+  flex-direction: row;
+}
+
+.block > div {
+  flex-grow: 1;
+}
