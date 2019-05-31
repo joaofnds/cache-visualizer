@@ -2,16 +2,7 @@ import "./style/style"
 import { h, render, Fragment } from "preact";
 import { useState } from "preact/hooks";
 import { Cache } from "./components/cache/cache"
-
-const BinCounter = ({ value, setValue }) => {
-  return (
-    <Fragment>
-      <button onClick={_ => setValue(value >> 1)}>-</button >
-      {value}
-      <button onClick={_ => setValue(value << 1)}>+</button>
-    </Fragment>
-  )
-}
+import { BinCounter } from "./components/BinCounter"
 
 const App = () => {
   const [sets, setSets] = useState(4);
@@ -21,13 +12,37 @@ const App = () => {
 
   return (
     <Fragment>
-      Sets: <BinCounter value={sets} setValue={setSets} />
+      Sets:
+      <BinCounter
+        value={sets}
+        setValue={setSets}
+        min={1}
+        max={64}
+      />
       <br />
-      Assoc: <BinCounter value={assoc} setValue={setAssoc} />
+      Assoc:
+      <BinCounter
+        value={assoc}
+        setValue={setAssoc}
+        min={1}
+        max={8}
+      />
       <br />
-      AddressSize: <BinCounter value={addressSize} setValue={setAddressSize} />
+      AddressSize:
+      <BinCounter
+        value={addressSize}
+        setValue={setAddressSize}
+        min={1}
+        max={blockSize}
+      />
       <br />
-      BlockSize: <BinCounter value={blockSize} setValue={setBlockSize} />
+      BlockSize:
+      <BinCounter
+        value={blockSize}
+        setValue={setBlockSize}
+        min={addressSize}
+        max={addressSize * 4}
+      />
       <br />
 
       <Cache
@@ -41,6 +56,6 @@ const App = () => {
 }
 
 render(
-  <App />
+  <App />,
   document.body
 );
