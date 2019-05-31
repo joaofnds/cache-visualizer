@@ -12,6 +12,8 @@ export const Block = ({ tagSize, offsetSize }: BlockProps) => {
   const binTag = toBinary(tagSize, tagSize)
   const binOffset = toBinary(offsetSize, offsetSize)
 
+  console.log({ tagSize, offsetSize })
+
   return (
     <div class="block">
       <div>{binTag}</div>

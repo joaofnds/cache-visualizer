@@ -3,18 +3,20 @@ import { times } from "lodash"
 import "style.css"
 
 import { Set } from "../set/set"
+import { Cache as CacheClass } from "../../lib/cache/cache";
 
-export const Cache = ({ addressSize, sets, blockSize, assoc }) => {
-  const indexSize = Math.log2(sets)
+interface CacheProps {
+  cache: CacheClass;
+}
 
+export const Cache = ({ cache }: CacheProps) => {
   return <Fragment>
-    {times(sets, index =>
+    {times(cache.sets.length, index =>
       <Set
         index={index}
-        indexSize={indexSize}
-        blockSize={blockSize}
-        addressSize={addressSize}
-        assoc={assoc}
+        indexSize={cache.indexSize}
+        blockSize={cache.blockSize}
+        assoc={cache.assoc}
       />
     )}
   </Fragment>;

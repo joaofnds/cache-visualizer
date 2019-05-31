@@ -5,19 +5,19 @@ import { times } from "lodash"
 
 import { Block } from "../block/block"
 import { toBinary } from "../../utils/binary";
+import { ADDRESS_SIZE } from "../../lib/cache/cache";
 
 interface SetProps {
   index: number,
   indexSize: number,
-  addressSize: number,
   blockSize: number,
   assoc: number
 }
 
-export const Set = ({ index, indexSize, addressSize, blockSize, assoc }: SetProps) => {
+export const Set = ({ index, indexSize, blockSize, assoc }: SetProps) => {
   const binaryIndex = toBinary(index, indexSize)
-  const offsetSize = Math.log2(blockSize / addressSize)
-  const tagSize = addressSize - indexSize - offsetSize
+  const offsetSize = Math.log2(blockSize / ADDRESS_SIZE)
+  const tagSize = ADDRESS_SIZE - indexSize - offsetSize
 
   return (
     <div class="set">
