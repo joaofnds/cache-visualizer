@@ -3,7 +3,7 @@ import { times } from "lodash"
 import "style.css"
 
 import { Set } from "../set/set"
-import { Cache as CacheClass } from "../../lib/cache/cache";
+import { Cache as CacheClass } from "../../lib/cache";
 
 interface CacheProps {
   cache: CacheClass;
@@ -17,6 +17,8 @@ export const Cache = ({ cache }: CacheProps) => {
         indexSize={cache.indexSize}
         blockSize={cache.blockSize}
         assoc={cache.assoc}
+        offsetSize={cache.offsetSize}
+        tagSize={cache.tagSize}
       />
     )}
   </Fragment>;

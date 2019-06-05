@@ -1,20 +1,9 @@
 import { times } from "lodash";
 
+import { Set } from "./set";
+import { Block } from "./block";
+
 export const ADDRESS_SIZE = 8;
-
-class Block {
-  validity: boolean;
-  tag: number;
-  data: Array<number>;
-}
-
-class Set {
-  blocks: Array<Block>
-
-  constructor(blocks: Array<Block>) {
-    this.blocks = blocks
-  }
-}
 
 export class Cache {
   cacheSize: number;
