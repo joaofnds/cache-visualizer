@@ -1,18 +1,25 @@
 {
-  "name": "cache-simulator",
-  "version": "1.0.0",
-  "description": "",
+  "name": "cache-visualizer",
+  "version": "0.0.1",
+  "description": "A small application meant to help you to better visualize a cache configuration given the number of sets, associativity and block size",
   "main": "src/main.tsx",
   "scripts": {
-    "serve": "parcel serve index.html"
+    "serve": "parcel serve index.html",
+    "watch": "parcel watch index.html",
+    "build": "parcel build index.html"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "cache",
+    "visualizer",
+    "typescript",
+    "preact",
+    "parcel"
+  ],
+  "author": "João Fernandes <joaofnds@joaofnds.com>",
+  "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.11",
     "preact": "^10.0.0-beta.1",
-    "sty": "^0.6.1",
     "style.css": "^1.0.0"
   },
   "devDependencies": {
