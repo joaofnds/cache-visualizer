@@ -12,14 +12,7 @@ interface CacheProps {
 export const Cache = ({ cache }: CacheProps) => {
   return <Fragment>
     {times(cache.sets.length, index =>
-      <Set
-        index={index}
-        indexSize={cache.indexSize}
-        blockSize={cache.blockSize}
-        assoc={cache.assoc}
-        offsetSize={cache.offsetSize}
-        tagSize={cache.tagSize}
-      />
+      <Set index={index} cache={cache} />
     )}
   </Fragment>;
 };

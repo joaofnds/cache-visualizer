@@ -1,14 +1,15 @@
 import "./style/style"
 import { h, render, Fragment } from "preact";
 import { useState } from "preact/hooks";
-import { Cache, ADDRESS_SIZE } from "./lib/cache/cache";
+import { Cache } from "./lib/cache/cache";
 import { Cache as CacheComponent } from "./components/cache/cache"
 import { BinCounter } from "./components/BinCounter"
+import { Address } from "./components/address/address";
 
 const App = () => {
   const [sets, setSets] = useState(4);
   const [assoc, setAssoc] = useState(1);
-  const [blockSize, setBlockSize] = useState(8);
+  const [blockSize, setBlockSize] = useState(4);
 
   const cache = new Cache(sets, blockSize, assoc)
 
@@ -32,9 +33,11 @@ const App = () => {
       <BinCounter
         value={blockSize}
         setValue={setBlockSize}
-        min={ADDRESS_SIZE}
-        max={ADDRESS_SIZE * 4}
+        min={1}
+        max={16}
       />
+
+      <Address cache={cache} />
 
       <CacheComponent
         cache={cache}

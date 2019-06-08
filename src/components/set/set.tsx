@@ -3,27 +3,20 @@ import "./style.css";
 import { h } from "preact";
 import { times } from "lodash"
 
-import { Block } from "../block/block"
+import { Cache } from "../../lib/cache";
 import { toBinary } from "../../utils/binary";
+import { Block } from "../block/block";
 
 interface SetProps {
   index: number,
-  indexSize: number,
-  blockSize: number,
-  tagSize: number,
-  offsetSize: number,
-  assoc: number
+  cache: Cache,
 }
 
-export const Set = (props: SetProps) => {
-  const binaryIndex = toBinary(props.index, props.indexSize)
-
-  return (
-    <div class="set">
-      <div>{binaryIndex}</div>
-      {times(props.assoc, _ =>
-        <Block tagSize={props.tagSize} offsetSize={props.offsetSize} />
-      )}
-    </div>
-  )
-};
+export const Set = ({ index, cache }: SetProps) => (
+  <div class="set">
+    <div>{index}</div>
+    {times(cache.assoc, _ =>
+      <Block cache={cache} />
+    )}
+  </div>
+);

@@ -1,21 +1,22 @@
 import "./index.css";
 import { h } from "preact";
+import { times } from "lodash"
+
 import { toBinary } from "../../utils/binary";
+import { Cache, WORD_SIZE } from "../../lib/cache";
 
 interface BlockProps {
-  tagSize: number,
-  offsetSize: number
+  cache: Cache
 }
 
-export const Block = ({ tagSize, offsetSize }: BlockProps) => {
-  const hasOffset = offsetSize !== 0;
-  const binTag = toBinary(tagSize, tagSize)
-  const binOffset = toBinary(offsetSize, offsetSize)
+export const Block = ({ cache }: BlockProps) => {
+  const blockData = times(cache.blockSize, () =>
+    toBinary(0, WORD_SIZE)
+  ).join(', ');
 
   return (
     <div class="block">
-      <div>{binTag}</div>
-      {hasOffset && <div>{binOffset}</div>}
+      <div>{blockData}</div>
     </div>
   )
 };
