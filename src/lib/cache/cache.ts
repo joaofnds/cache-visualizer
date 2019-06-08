@@ -4,6 +4,7 @@ import { Set } from "./set";
 import { Block } from "./block";
 
 export const ADDRESS_SIZE = 8;
+export const WORD_SIZE = 8;
 
 export class Cache {
   cacheSize: number;
@@ -18,7 +19,6 @@ export class Cache {
 
   // block info
   blockSize: number;
-  wordsPerBlock: number;
   offsetSize: number;
   offsetMask: number;
   sets: Array<Set>;
@@ -27,8 +27,7 @@ export class Cache {
     this.blockSize = blockSize;
     this.indexSize = Math.log2(sets);
     this.tagSize = ADDRESS_SIZE - this.indexSize;
-    this.wordsPerBlock = blockSize / ADDRESS_SIZE;
-    this.offsetSize = Math.log2(this.wordsPerBlock)
+    this.offsetSize = Math.log2(blockSize)
     this.assoc = assoc;
 
     this.sets = times(sets, () => {
