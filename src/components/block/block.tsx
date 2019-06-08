@@ -3,7 +3,7 @@ import { h } from "preact";
 import { times } from "lodash"
 
 import { toBinary } from "../../utils/binary";
-import { Cache, WORD_SIZE } from "../../lib/cache";
+import { Cache } from "../../lib/cache";
 
 interface BlockProps {
   cache: Cache
@@ -11,7 +11,7 @@ interface BlockProps {
 
 export const Block = ({ cache }: BlockProps) => {
   const blockData = times(cache.blockSize, () =>
-    toBinary(0, WORD_SIZE)
+    toBinary(0, cache.WORD_SIZE)
   ).join(', ');
 
   return (

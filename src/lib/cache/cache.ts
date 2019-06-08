@@ -3,10 +3,10 @@ import { times } from "lodash";
 import { Set } from "./set";
 import { Block } from "./block";
 
-export const ADDRESS_SIZE = 8;
-export const WORD_SIZE = 8;
-
 export class Cache {
+  ADDRESS_SIZE: number = 8;
+  WORD_SIZE: number = 8;
+
   cacheSize: number;
   numberOfSets: number;
   replacementPolicy: number;
@@ -26,7 +26,7 @@ export class Cache {
   constructor(sets: number, blockSize: number, assoc: number) {
     this.blockSize = blockSize;
     this.indexSize = Math.log2(sets);
-    this.tagSize = ADDRESS_SIZE - this.indexSize;
+    this.tagSize = this.ADDRESS_SIZE - this.indexSize;
     this.offsetSize = Math.log2(blockSize)
     this.assoc = assoc;
 
