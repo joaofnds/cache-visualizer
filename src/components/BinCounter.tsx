@@ -12,7 +12,11 @@ interface BinCounterProps {
 export const BinCounter = ({ value, setValue, min, max }: BinCounterProps) => {
   const increase = () => setValue(value << 1);
   const decrease = () => setValue(value >> 1);
-  const change = (n: number) => n > value ? increase() : decrease();
+  const change = (n: number) => {
+    if (min <= n && n <= max && n != value) {
+      return n > value ? increase() : decrease();
+    }
+  }
   const inputValue = ({ target }) => target.value;
 
   return (
