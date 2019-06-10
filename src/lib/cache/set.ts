@@ -1,9 +1,9 @@
 import { Block } from "./block";
 
 export class Set {
-  blocks: Array<Block>
+  blocks: Block[];
 
-  constructor(blocks: Array<Block>) {
+  constructor(blocks: Block[]) {
     this.blocks = blocks
   }
 }
