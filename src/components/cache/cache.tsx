@@ -11,7 +11,7 @@ interface CacheProps {
 
 export const Cache = ({ cache }: CacheProps) => {
   return <Fragment>
-    {times(cache.sets.length, index =>
+    {times(cache.setsSize, index =>
       <Set index={index} cache={cache} />
     )}
   </Fragment>;

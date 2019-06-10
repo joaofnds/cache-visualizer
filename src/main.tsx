@@ -1,4 +1,5 @@
 import "./style/style"
+import { random } from "lodash";
 import { h, render, Fragment } from "preact";
 import { useState } from "preact/hooks";
 import { Cache } from "./lib/cache/cache";
@@ -12,6 +13,10 @@ const App = () => {
   const [blockSize, setBlockSize] = useState(4);
 
   const cache = new Cache(sets, blockSize, assoc)
+  for (let i = 0; i < 1024; i++) {
+    let address = random(0, 512);
+    cache.get(address);
+  }
 
   return (
     <Fragment>

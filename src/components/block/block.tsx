@@ -6,13 +6,28 @@ import { toBinary } from "../../utils/binary";
 import { Cache } from "../../lib/cache";
 
 interface BlockProps {
-  cache: Cache
+  cache: Cache;
+  setIndex: number;
+  blockIndex: number;
+  displayAsBinary: boolean;
 }
 
-export const Block = ({ cache }: BlockProps) => {
-  const blockData = times(cache.blockSize, () =>
-    toBinary(0, cache.WORD_SIZE)
-  ).join(', ');
+export const Block = ({
+  cache: {
+    blockSize,
+    sets,
+    WORD_SIZE
+  },
+  setIndex,
+  blockIndex,
+  displayAsBinary = false
+}: BlockProps) => {
+  const blockData = times(blockSize, i => {
+    let data = sets[setIndex].blocks[blockIndex].data[i]
+    let displayValue = displayAsBinary ? toBinary(data, WORD_SIZE) : data;
+
+    return <div>{displayValue}</div>
+  });
 
   return (
     <div class="block">

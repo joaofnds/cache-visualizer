@@ -15,8 +15,13 @@ interface SetProps {
 export const Set = ({ index, cache }: SetProps) => (
   <div class="set">
     <div>{index}</div>
-    {times(cache.assoc, _ =>
-      <Block cache={cache} />
+    {times(cache.assoc, i =>
+      <Block
+        cache={cache}
+        setIndex={index}
+        blockIndex={i}
+        displayAsBinary={false}
+      />
     )}
   </div>
 );
